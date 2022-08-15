@@ -1,0 +1,58 @@
+@import "../../styles/common.scss";
+@import "../../styles/breakpoints.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 17px;
+
+  @include for-large-up {
+    width: 1170px;
+    margin: auto;
+    margin-bottom: 17px;
+  }
+
+  &__logo {
+    margin-top: 17px;
+    margin-left: 23px;
+
+    & img {
+      width: 104px;
+      height: 26px;
+    }
+
+    @include for-small-up {
+      margin-left: 39px;
+    }
+
+    @include for-medium-up {
+      margin-left: 65px;
+    }
+
+    @include for-large-up {
+      margin-left: 0px;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 13px;
+    margin-right: 16px;
+    width: 210px;
+    height: 34px;
+
+    @include for-small-up {
+      margin-right: 32px;
+    }
+
+    @include for-medium-up {
+      margin-right: 60px;
+    }
+
+    @include for-large-up {
+      margin-right: 0px;
+    }
+  }
+}

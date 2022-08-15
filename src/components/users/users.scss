@@ -1,0 +1,45 @@
+@import "../../styles/breakpoints.scss";
+
+.users {
+  padding: 140px 16px;
+  text-align: center;
+
+  &__title {
+    margin-bottom: 50px;
+  }
+
+  &__cards {
+    @include for-small-up {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-column-gap: 16px;
+      grid-row-gap: 16px;
+    }
+
+    @include for-medium-up {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      grid-column-gap: 29px;
+      grid-row-gap: 29px;
+    }
+
+    @include for-large-up {
+      display: grid;
+      width: 1170px;
+      margin: auto;
+
+      grid-template-columns: 370px 370px 370px;
+      grid-template-rows: auto;
+      grid-column-gap: 29px;
+      grid-row-gap: 29px;
+    }
+  }
+
+  &__show-more-btn {
+    margin-top: 50px;
+  }
+}

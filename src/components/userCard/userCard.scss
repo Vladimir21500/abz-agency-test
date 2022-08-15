@@ -1,0 +1,57 @@
+@import "../../styles/variables.scss";
+@import "../../styles/breakpoints.scss";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  height: 254px;
+  width: 100%;
+  padding: 20px;
+  background-color: $background-color-card;
+  text-align: center;
+  border-radius: 10px;
+
+  @include for-small-up {
+    margin: 0px;
+  }
+
+  @include for-medium-up {
+    margin: 0px;
+  }
+
+  @include for-large-up {
+    margin: 0px;
+  }
+
+  &__photo {
+    height: 70px;
+    width: 70px;
+    border-radius: 35px;
+  }
+
+  &__name {
+    max-width: 274px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 274px;
+    line-height: 26px;
+  }
+
+  &__email {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__position {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

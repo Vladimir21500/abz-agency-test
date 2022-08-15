@@ -1,0 +1,21 @@
+@import "./variables.scss";
+
+.btn {
+  width: 100px;
+  height: 34px;
+  background-color: $background-color-btn;
+  color: black;
+  font-size: 16px;
+  line-height: 26px;
+  border: none;
+  outline: none;
+  border-radius: 80px;
+
+  &:disabled {
+    background-color: grey;
+  }
+
+  &:hover {
+    background-color: $background-color-btn-hover;
+  }
+}
