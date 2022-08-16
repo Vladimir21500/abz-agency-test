@@ -28,7 +28,7 @@ const App: React.FC<{}> = () => {
       }
       setIsLastPageUsers(data.page === data.total_pages);
     });
-  }, [currentPage]);
+  }, [currentPage, isRegistered]);
 
   useEffect(() => {
     getUserPositions().then((positions) => {
