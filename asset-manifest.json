@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/abz-agency-test/static/css/main.af7cf2f7.css",
+    "main.js": "/abz-agency-test/static/js/main.8c84999b.js",
+    "static/media/banner.png": "/abz-agency-test/static/media/banner.827be205d1bc9668d171.png",
+    "index.html": "/abz-agency-test/index.html",
+    "main.af7cf2f7.css.map": "/abz-agency-test/static/css/main.af7cf2f7.css.map",
+    "main.8c84999b.js.map": "/abz-agency-test/static/js/main.8c84999b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.af7cf2f7.css",
+    "static/js/main.8c84999b.js"
+  ]
+}
