@@ -1,5 +1,6 @@
 import React from "react";
 import { IBannerProps } from "../../types/properties";
+
 import "./banner.scss";
 
 const Banner: React.FC<IBannerProps> = ({ moveToSignUp }) => {

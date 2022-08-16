@@ -12,18 +12,11 @@ import {
 } from "./gateway/gateway";
 import { IUserInfo, IUserPosition } from "./types/user";
 
-// 2. fix problem with shrink banner
-// 3. stylezation input(fileType) (no picture title)
-// 4. add new color fot radio button
-// 5.0 typyzation improve
-// 5. refactoring
-// 6. deploy and finish tests
-
-const App = () => {
-  const [isRegistered, setIsRegistered] = useState<boolean>(false);
+const App: React.FC<{}> = () => {
   const [users, setUsers] = useState<IUserInfo[] | []>([]);
   const [userPositions, setUserPositions] = useState<IUserPosition[] | []>([]);
   const [isLastPageUsers, setIsLastPageUsers] = useState<boolean>(false);
+  const [isRegistered, setIsRegistered] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   useEffect(() => {
@@ -45,7 +38,6 @@ const App = () => {
 
   const registration = async (userData: any) => {
     const token = await getToken();
-
     const response = await createUser(userData, token.token);
 
     if (!response.success) {

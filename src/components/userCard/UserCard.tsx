@@ -1,5 +1,6 @@
 import React from "react";
 import { IUserCardProps } from "../../types/properties";
+
 import "./userCard.scss";
 
 const UserCard: React.FC<IUserCardProps> = ({

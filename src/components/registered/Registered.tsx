@@ -1,7 +1,8 @@
 import React from "react";
+
 import "./registered.scss";
 
-const Registered = () => {
+const Registered: React.FC<{}> = () => {
   return (
     <div className='registered'>
       <h3 className='registered__title'>User successfully registered</h3>

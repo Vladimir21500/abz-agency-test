@@ -1,11 +1,11 @@
 import { IUserInfo, IUserPosition } from "./user";
 
-export interface IBannerProps {
+export interface IHeaderProps {
+  moveToUsers: () => void;
   moveToSignUp: () => void;
 }
 
-export interface IHeaderProps {
-  moveToUsers: () => void;
+export interface IBannerProps {
   moveToSignUp: () => void;
 }
 

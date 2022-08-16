@@ -1,8 +1,9 @@
 import React, { useState, useRef } from "react";
 import { ISignUpProps } from "../../types/properties";
 import { IUserInfo } from "../../types/user";
-import { validationUser } from "../../validation/newUser";
 import { IError } from "../../types/error";
+import { validationUser } from "../../validation/newUser";
+
 import "./signUp.scss";
 
 const SignUp: React.FC<ISignUpProps> = ({ positions, registration }) => {
@@ -126,7 +127,7 @@ const SignUp: React.FC<ISignUpProps> = ({ positions, registration }) => {
             </div>
           ))}
         </div>
-        <div className='sign-up__input-container'>
+        <div className='sign-up__input-file-container'>
           <input
             id='photo'
             className={errors.photo !== "" ? "invalid" : ""}

@@ -1,5 +1,6 @@
 import React from "react";
 import { IHeaderProps } from "../../types/properties";
+
 import "./header.scss";
 
 const Header: React.FC<IHeaderProps> = ({ moveToUsers, moveToSignUp }) => {

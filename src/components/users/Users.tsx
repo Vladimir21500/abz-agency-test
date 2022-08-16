@@ -1,13 +1,10 @@
 import React from "react";
 import { IUsersProps } from "../../types/properties";
 import UserCard from "../userCard/UserCard";
+
 import "./users.scss";
 
 const Users: React.FC<IUsersProps> = ({ users, showMore, isLastPageUsers }) => {
-  const handlerClick = (): void => {
-    showMore();
-  };
-
   return (
     <div className='users'>
       <h1 className='users__title'>Working with GET request</h1>
@@ -26,7 +23,7 @@ const Users: React.FC<IUsersProps> = ({ users, showMore, isLastPageUsers }) => {
       <button
         className={`users__show-more-btn btn 
         ${isLastPageUsers ? "hidden" : ""}`}
-        onClick={handlerClick}
+        onClick={() => showMore()}
       >
         Show more
       </button>
