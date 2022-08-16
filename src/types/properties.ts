@@ -25,5 +25,5 @@ export interface IUserCardProps {
 
 export interface ISignUpProps {
   positions: IUserPosition[];
-  registration: (userData) => void;
+  registration: (userData: any) => void;
 }

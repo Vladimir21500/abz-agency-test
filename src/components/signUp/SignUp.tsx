@@ -74,7 +74,7 @@ const SignUp: React.FC<ISignUpProps> = ({ positions, registration }) => {
   ): void => {
     const fileField = document.querySelector(
       'input[type="file"]'
-    ) as HTMLInputElement | null;
+    ) as HTMLInputElement;
     const photo = fileField.files[0];
     setUserInfo({
       ...userInfo,

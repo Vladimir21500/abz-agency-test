@@ -13,7 +13,7 @@ export const getUsers = async (page: number) => {
   }
 };
 
-export const createUser = async (formData, token) => {
+export const createUser = async (formData: any, token: string) => {
   try {
     const response = await fetch(
       "https://frontend-test-assignment-api.abz.agency/api/v1/users",

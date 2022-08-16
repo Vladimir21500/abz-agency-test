@@ -39,9 +39,7 @@ const App = () => {
     });
   }, []);
 
-  const registration = async (userData) => {
-    console.log(userData);
-
+  const registration = async (userData: any) => {
     const token = await getToken();
 
     const response = await createUser(userData, token.token);
@@ -60,12 +58,12 @@ const App = () => {
   };
 
   const moveToUsers = () => {
-    const usersElem = document.querySelector(".users__title");
+    const usersElem = document.querySelector(".users__title") as HTMLElement;
     usersElem.scrollIntoView({ block: "center", inline: "center" });
   };
 
   const moveToSignUp = () => {
-    const signUpElem = document.querySelector(".sign-up__title");
+    const signUpElem = document.querySelector(".sign-up__title") as HTMLElement;
     signUpElem.scrollIntoView({ block: "center", inline: "center" });
   };
 
