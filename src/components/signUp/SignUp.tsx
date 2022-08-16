@@ -72,7 +72,9 @@ const SignUp: React.FC<ISignUpProps> = ({ positions, registration }) => {
   const changePhotoHandler = (
     event: React.SyntheticEvent<HTMLInputElement>
   ): void => {
-    const fileField = document.querySelector('input[type="file"]');
+    const fileField = document.querySelector(
+      'input[type="file"]'
+    ) as HTMLInputElement | null;
     const photo = fileField.files[0];
     setUserInfo({
       ...userInfo,

@@ -39,7 +39,7 @@ const App = () => {
     });
   }, []);
 
-  const registration = async (userData): void => {
+  const registration = async (userData) => {
     console.log(userData);
 
     const token = await getToken();

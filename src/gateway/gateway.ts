@@ -5,7 +5,7 @@ export const getUsers = async (page: number) => {
     );
 
     if (!response.ok) {
-      throw new Error(response.status);
+      throw new Error(`${response.status}`);
     }
     return response.json();
   } catch (error) {
@@ -27,7 +27,7 @@ export const createUser = async (formData, token) => {
     );
 
     if (!response.ok) {
-      throw new Error(response.status);
+      throw new Error(`${response.status}`);
     }
     return response.json();
   } catch (error) {
@@ -42,7 +42,7 @@ export const getToken = async () => {
     );
 
     if (!response.ok) {
-      throw new Error(response.status);
+      throw new Error(`${response.status}`);
     }
     return response.json();
   } catch (error) {
@@ -57,7 +57,7 @@ export const getUserPositions = async () => {
     );
 
     if (!response.ok) {
-      throw new Error(response.status);
+      throw new Error(`${response.status}`);
     }
     const data = await response.json();
 
