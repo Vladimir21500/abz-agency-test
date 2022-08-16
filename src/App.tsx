@@ -12,7 +12,6 @@ import {
 } from "./gateway/gateway";
 import { IUserInfo, IUserPosition } from "./types/user";
 
-// catch all errors !!!
 // 2. fix problem with shrink banner
 // 3. stylezation input(fileType) (no picture title)
 // 4. add new color fot radio button
