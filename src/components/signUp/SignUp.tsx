@@ -21,7 +21,6 @@ const SignUp: React.FC<ISignUpProps> = ({ positions, registration }) => {
     phone: "",
     photo: "",
   });
-  const [isDisabledSubmit, setIsDisabledSubmit] = useState<boolean>(false);
 
   const changeHandler = (
     event: React.SyntheticEvent<HTMLInputElement | HTMLDivElement>
@@ -40,7 +39,6 @@ const SignUp: React.FC<ISignUpProps> = ({ positions, registration }) => {
     const errorsObj = validationUser(userInfo);
 
     if (!Object.values(errorsObj).every((el) => el === "")) {
-      setIsDisabledSubmit(true);
       setErrors({
         ...errors,
         ...errorsObj,
@@ -142,7 +140,7 @@ const SignUp: React.FC<ISignUpProps> = ({ positions, registration }) => {
           <span className='span-for-upload'>Upload your photo</span>
         </div>
         {errors.photo && <span className='sign-up__error'>{errors.photo}</span>}
-        <button className='btn' type='submit' disabled={isDisabledSubmit}>
+        <button className='btn' type='submit'>
           Sign In
         </button>
       </form>
