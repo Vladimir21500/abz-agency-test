@@ -28,7 +28,11 @@ const App = () => {
 
   useEffect(() => {
     getUsers(currentPage).then((data) => {
-      setUsers([...users, ...data.users]);
+      if (currentPage === 1) {
+        setUsers([...data.users]);
+      } else {
+        setUsers([...users, ...data.users]);
+      }
       setIsLastPageUsers(data.page === data.total_pages);
     });
   }, [currentPage]);
@@ -43,7 +47,6 @@ const App = () => {
     const token = await getToken();
 
     const response = await createUser(userData, token.token);
-    console.log("response", response);
 
     if (!response.success) {
       alert(response.message);
@@ -51,10 +54,6 @@ const App = () => {
 
     setIsRegistered(true);
     setCurrentPage(1);
-    getUsers(currentPage).then((data) => {
-      setUsers(data.users);
-      setIsLastPageUsers(data.page === data.total_pages);
-    });
   };
 
   const moveToUsers = () => {

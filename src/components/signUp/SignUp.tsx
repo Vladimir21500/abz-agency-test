@@ -64,7 +64,6 @@ const SignUp: React.FC<ISignUpProps> = ({ positions, registration }) => {
     formData.append("photo", photo);
 
     registration(formData);
-    console.log(userInfo);
 
     return null;
   };
