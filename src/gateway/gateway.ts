@@ -9,7 +9,7 @@ export const getUsers = async (page: number) => {
     }
     return response.json();
   } catch (error) {
-    alert(error);
+    alert(`get users, ${error}`);
   }
 };
 
@@ -26,12 +26,19 @@ export const createUser = async (formData: any, token: string) => {
       }
     );
 
-    if (!response.ok) {
-      throw new Error(`${response.status}`);
+    if (response.status === 409) {
+      console.log("409", response);
+      throw new Error("User with this phone or email already exist");
     }
+
+    if (response.status === 422) {
+      console.log("422", response);
+      throw new Error("Validation failed");
+    }
+
     return response.json();
   } catch (error) {
-    alert(error);
+    alert(`post user ${error}`);
   }
 };
 
@@ -46,7 +53,7 @@ export const getToken = async () => {
     }
     return response.json();
   } catch (error) {
-    alert(error);
+    alert(`get token ${error}`);
   }
 };
 
@@ -63,6 +70,6 @@ export const getUserPositions = async () => {
 
     return data.positions;
   } catch (error) {
-    alert(error);
+    alert(`get user positions ${error}`);
   }
 };

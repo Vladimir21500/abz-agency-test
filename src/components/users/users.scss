@@ -5,7 +5,12 @@
   text-align: center;
 
   &__title {
+    margin: 0px;
     margin-bottom: 50px;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.87);
   }
 
   &__cards {
@@ -20,6 +25,8 @@
 
     @include for-medium-up {
       display: grid;
+      max-width: 1170px;
+      margin: auto;
 
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: auto;
@@ -29,8 +36,6 @@
 
     @include for-large-up {
       display: grid;
-      width: 1170px;
-      margin: auto;
 
       grid-template-columns: 370px 370px 370px;
       grid-template-rows: auto;

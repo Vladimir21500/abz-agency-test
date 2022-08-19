@@ -40,12 +40,10 @@ const App: React.FC<{}> = () => {
     const token = await getToken();
     const response = await createUser(userData, token.token);
 
-    if (!response.success) {
-      alert(response.message);
+    if (response.success) {
+      setIsRegistered(true);
+      setCurrentPage(1);
     }
-
-    setIsRegistered(true);
-    setCurrentPage(1);
   };
 
   const moveToUsers = () => {

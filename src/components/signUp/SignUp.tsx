@@ -1,145 +1,113 @@
-import React, { useState, useRef } from "react";
-import { ISignUpProps } from "../../types/properties";
-import { IUserInfo } from "../../types/user";
-import { IError } from "../../types/error";
-import { validationUser } from "../../validation/newUser";
+import React, { useState, useRef, useEffect } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { validationSchema } from "../../validation/newUser";
+import { ISignUpProps, IFormInputs } from "../../types/properties";
 
 import "./signUp.scss";
 
 const SignUp: React.FC<ISignUpProps> = ({ positions, registration }) => {
-  const [userInfo, setUserInfo] = useState<IUserInfo>({
-    id: 0,
-    name: "",
-    email: "",
-    phone: "",
-    position: "1",
-    photo: "",
-  });
-  const [errors, setErrors] = useState<IError>({
-    name: "",
-    email: "",
-    phone: "",
-    photo: "",
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInputs>({
+    mode: "onChange",
+    reValidateMode: "onChange",
+    resolver: yupResolver(validationSchema),
   });
 
-  const changeHandler = (
-    event: React.SyntheticEvent<HTMLInputElement | HTMLDivElement>
-  ): void => {
+  const changePhotoHandler = (event: any) => {
+    const uploadSpanElem = document.querySelector(".span-for-upload");
+
     const target = event.target as HTMLInputElement;
-    const { name, value } = target;
-
-    setUserInfo({
-      ...userInfo,
-      [name]: value,
-    });
+    uploadSpanElem.innerHTML = target.files[0].name;
   };
 
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>): null => {
-    event.preventDefault();
-    const errorsObj = validationUser(userInfo);
+  useEffect(() => {
+    const inputFile = document.querySelector("input[type='file'");
+    inputFile.addEventListener("change", changePhotoHandler);
+    return () => {
+      inputFile.removeEventListener("change", changePhotoHandler);
+    };
+  }, []);
 
-    if (!Object.values(errorsObj).every((el) => el === "")) {
-      setErrors({
-        ...errors,
-        ...errorsObj,
-      });
-      return null;
-    }
-
-    setErrors({
-      name: "",
-      email: "",
-      phone: "",
-      photo: "",
-    });
-
-    const { name, email, phone, position, photo } = userInfo;
-
+  const onSubmit: SubmitHandler<IFormInputs> = (data: any) => {
     const formData = new FormData();
-    formData.append("position_id", position);
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("phone", phone);
-    formData.append("photo", photo);
+
+    formData.append("position_id", data.position);
+    formData.append("name", data.name);
+    formData.append("email", data.email);
+    formData.append("phone", data.phone);
+    formData.append("photo", data.photo[0]);
 
     registration(formData);
-
-    return null;
   };
-
-  const changePhotoHandler = (
-    event: React.SyntheticEvent<HTMLInputElement>
-  ): void => {
-    const fileField = document.querySelector(
-      'input[type="file"]'
-    ) as HTMLInputElement;
-    const photo = fileField.files[0];
-    setUserInfo({
-      ...userInfo,
-      photo,
-    });
-  };
-
-  const { name, email, phone } = userInfo;
 
   return (
     <div className='sign-up'>
       <h2 className='sign-up__title'>Working with POST request</h2>
-      <form className='sign-up__form' onSubmit={submitHandler}>
+      <form className='sign-up__form' onSubmit={handleSubmit(onSubmit)}>
         <input
-          className={errors.name !== "" ? "invalid" : ""}
-          onChange={changeHandler}
-          name='name'
-          type='text'
-          value={name}
-          placeholder='Your name'
-          required
+          className={errors.name ? "invalid" : ""}
+          id='name'
+          {...register("name")}
+          placeholder='name'
         />
-        {errors.name && <span className='sign-up__error'>{errors.name}</span>}
+        {errors.name && (
+          <span className='sign-up__error'>{errors.name.message}</span>
+        )}
         <input
-          className={errors.email !== "" ? "invalid" : ""}
-          onChange={changeHandler}
-          name='email'
-          type='email'
-          value={email}
-          placeholder='Email'
-          required
+          className={errors.email ? "invalid" : ""}
+          {...register("email")}
+          placeholder='email'
         />
-        {errors.email && <span className='sign-up__error'>{errors.email}</span>}
+        {errors.email && (
+          <span className='sign-up__error'>{errors.email.message}</span>
+        )}
         <input
-          className={errors.phone !== "" ? "invalid" : ""}
-          onChange={changeHandler}
-          name='phone'
-          type='text'
-          value={phone}
-          placeholder='Phone'
-          required
+          className={errors.phone ? "invalid" : ""}
+          {...register("phone")}
+          placeholder='phone'
         />
-        {errors.phone && <span className='sign-up__error'>{errors.phone}</span>}
-        <h5 className='sign-up__select-title'>Select your position</h5>
-        <div className='sign-up__select' onChange={changeHandler}>
+        {errors.phone ? (
+          <span className='sign-up__error'>{errors.phone.message}</span>
+        ) : (
+          <span className='sign-up__prompt'>+38 (XXX) XXX - XX - XX</span>
+        )}
+        <h5 className='select-title'>Select your position</h5>
+        <div className='select'>
           {positions.map((position) => (
             <div key={position.id}>
-              <input type='radio' value={position.id} name='position' />
+              <input
+                {...register("position")}
+                type='radio'
+                value={position.id}
+                name='position'
+              />
               <label>{position.name}</label>
             </div>
           ))}
         </div>
+        {errors.position && (
+          <span className='sign-up__error'>{errors.position.message}</span>
+        )}
+
         <div className='sign-up__input-file-container'>
-          <input
-            id='photo'
-            className={errors.photo !== "" ? "invalid" : ""}
-            onChange={changePhotoHandler}
-            type='file'
-            accept='image/png,image/jpeg'
-            required
-          />
-          <label className='label-for-upload' htmlFor='photo'>
+          <input id='photo' {...register("photo")} type='file' name='photo' />
+          <label
+            className={`label-for-upload ${errors.photo ? "invalid" : ""}`}
+            htmlFor='photo'
+          >
             Upload
           </label>
-          <span className='span-for-upload'>Upload your photo</span>
+          <span className={`span-for-upload ${errors.photo ? "invalid" : ""}`}>
+            Upload your file
+          </span>
         </div>
-        {errors.photo && <span className='sign-up__error'>{errors.photo}</span>}
+        {errors.photo && (
+          <span className='sign-up__error'>{errors.photo.message}</span>
+        )}
         <button className='btn' type='submit'>
           Sign In
         </button>
