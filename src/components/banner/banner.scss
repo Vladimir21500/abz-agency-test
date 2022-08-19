@@ -3,17 +3,24 @@
 .banner {
   padding: 40px 16px 71px;
   background-image: url(../../../public/banner.png);
-  width: 100%;
+  background-repeat: no-repeat;
+  width: auto;
   max-height: 500px;
   margin: auto;
   color: white;
 
+  @include for-small-up {
+    padding: 89px 194px 88px;
+  }
+
   @include for-medium-up {
     max-height: 650px;
+    max-width: 1170px;
+    padding: 164px 322px 163px;
   }
 
   @include for-large-up {
-    max-width: 1170px;
+    padding: 164px 395px 163px;
   }
 
   &__title {

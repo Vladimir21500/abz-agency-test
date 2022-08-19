@@ -23,6 +23,14 @@ export interface IUserCardProps {
   photo: string;
 }
 
+export interface IFormInputs {
+  name: string;
+  email: string;
+  phone: string;
+  position: string;
+  photo: string;
+}
+
 export interface ISignUpProps {
   positions: IUserPosition[];
   registration: (userData: any) => void;
