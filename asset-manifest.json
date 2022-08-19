@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/abz-agency-test/static/css/main.44b69db5.css",
-    "main.js": "/abz-agency-test/static/js/main.5173e170.js",
+    "main.css": "/abz-agency-test/static/css/main.80c45c47.css",
+    "main.js": "/abz-agency-test/static/js/main.3d68037c.js",
     "static/media/banner.png": "/abz-agency-test/static/media/banner.827be205d1bc9668d171.png",
     "index.html": "/abz-agency-test/index.html",
-    "main.44b69db5.css.map": "/abz-agency-test/static/css/main.44b69db5.css.map",
-    "main.5173e170.js.map": "/abz-agency-test/static/js/main.5173e170.js.map"
+    "main.80c45c47.css.map": "/abz-agency-test/static/css/main.80c45c47.css.map",
+    "main.3d68037c.js.map": "/abz-agency-test/static/js/main.3d68037c.js.map"
   },
   "entrypoints": [
-    "static/css/main.44b69db5.css",
-    "static/js/main.5173e170.js"
+    "static/css/main.80c45c47.css",
+    "static/js/main.3d68037c.js"
   ]
 }
