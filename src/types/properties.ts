@@ -31,6 +31,30 @@ export interface IFormInputs {
   photo: string;
 }
 
+export interface IInputProps {
+  name: string;
+  register: any;
+  errors: any;
+}
+
+interface IRadioValue {
+  id: number;
+  name: string;
+}
+
+export interface IRadioGroupProps {
+  name: string;
+  valuesArray: IRadioValue[];
+  register: any;
+  errors: any;
+}
+
+export interface IFileProps {
+  name: string;
+  register: any;
+  errors: any;
+}
+
 export interface ISignUpProps {
   positions: IUserPosition[];
   registration: (userData: any) => void;

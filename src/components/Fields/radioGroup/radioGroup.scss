@@ -1,0 +1,29 @@
+@import "./../../../styles/breakpoints.scss";
+
+.radio-group {
+  div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 328px;
+    font-size: 16px;
+    line-height: 26px;
+
+    @include for-small-up {
+      width: 380px;
+    }
+
+    input[type="radio"] {
+      width: auto;
+      margin: 0;
+      height: 20px;
+      width: 20px;
+      cursor: pointer;
+    }
+
+    label {
+      cursor: pointer;
+      margin-left: 12px;
+    }
+  }
+}
