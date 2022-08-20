@@ -12,6 +12,7 @@ import "./signUp.scss";
 const SignUp: React.FC<ISignUpProps> = ({ positions, registration }) => {
   const {
     register,
+    getValues,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInputs>({
@@ -51,9 +52,24 @@ const SignUp: React.FC<ISignUpProps> = ({ positions, registration }) => {
     <div className='sign-up'>
       <h2 className='sign-up__title'>Working with POST request</h2>
       <form className='sign-up__form' onSubmit={handleSubmit(onSubmit)}>
-        <Input name='name' register={register} errors={errors}></Input>
-        <Input name='email' register={register} errors={errors}></Input>
-        <Input name='phone' register={register} errors={errors}></Input>
+        <Input
+          name='name'
+          register={register}
+          errors={errors}
+          value={getValues().name}
+        ></Input>
+        <Input
+          name='email'
+          register={register}
+          errors={errors}
+          value={getValues().email}
+        ></Input>
+        <Input
+          name='phone'
+          register={register}
+          errors={errors}
+          value={getValues().phone}
+        ></Input>
         {!errors.phone && (
           <span className='sign-up__prompt'>+38 (XXX) XXX - XX - XX</span>
         )}

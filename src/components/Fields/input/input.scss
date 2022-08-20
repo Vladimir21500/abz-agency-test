@@ -1,26 +1,56 @@
 @import "./../../../styles/breakpoints.scss";
+@import "./../../../styles/variables.scss";
 
-input {
-  display: block;
-  width: 328px;
-  margin: auto;
-  margin-top: 50px;
-  padding-left: 16px;
-  height: 54px;
-  font-size: 16px;
-  line-height: 26px;
-  color: #7e7e7e;
-  border: none;
-  border: 1px solid #d0cfcf;
-  border-radius: 4px;
+.input-container {
+  height: 104px;
+  position: relative;
 
-  &:focus {
-    outline: none;
-    box-shadow: none;
+  input {
+    display: block;
+    width: 328px;
+    margin: auto;
+    margin-top: 50px;
+    padding-left: 16px;
+    height: 54px;
+    background: none;
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(0, 0, 0, 0.87);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: none;
     border: 1px solid #d0cfcf;
+    border-radius: 4px;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      border: 1px solid #d0cfcf;
+    }
+
+    @include for-small-up {
+      width: 380px;
+    }
   }
 
-  @include for-small-up {
-    width: 380px;
+  .label {
+    background-color: $background-color;
+    left: 16px;
+    z-index: 1;
+    position: relative;
+    bottom: 65px;
+    padding: 5px;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 500;
+    color: #7e7e7e;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .error-label {
+    color: #cb3d40;
   }
 }

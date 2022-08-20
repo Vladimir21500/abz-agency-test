@@ -67,12 +67,12 @@
       width: 380px;
     }
   }
-}
 
-.invalid {
-  border: 2px solid #cb3d40;
-
-  &:focus {
+  .invalid {
     border: 2px solid #cb3d40;
+
+    &:focus {
+      border: 2px solid #cb3d40;
+    }
   }
 }

@@ -3,6 +3,7 @@ import Header from "./components/header/Header";
 import Banner from "./components/banner/Banner";
 import Users from "./components/users/Users";
 import SignUp from "./components/signUp/SignUp";
+import Loader from "./components/loader/Loader";
 import Registered from "./components/registered/Registered";
 import {
   getUsers,
@@ -17,6 +18,7 @@ const App: React.FC<{}> = () => {
   const [userPositions, setUserPositions] = useState<IUserPosition[] | []>([]);
   const [isLastPageUsers, setIsLastPageUsers] = useState<boolean>(false);
   const [isRegistered, setIsRegistered] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   useEffect(() => {
@@ -37,9 +39,10 @@ const App: React.FC<{}> = () => {
   }, []);
 
   const registration = async (userData: any) => {
+    setIsLoading(true);
     const token = await getToken();
     const response = await createUser(userData, token.token);
-
+    setIsLoading(false);
     if (response.success) {
       setIsRegistered(true);
       setCurrentPage(1);
@@ -60,6 +63,12 @@ const App: React.FC<{}> = () => {
     setCurrentPage(currentPage + 1);
   };
 
+  const signUp = isRegistered ? (
+    <Registered />
+  ) : (
+    <SignUp positions={userPositions} registration={registration} />
+  );
+
   return (
     <div className='page'>
       <Header moveToUsers={moveToUsers} moveToSignUp={moveToSignUp} />
@@ -69,11 +78,7 @@ const App: React.FC<{}> = () => {
         showMore={showMore}
         isLastPageUsers={isLastPageUsers}
       />
-      {isRegistered ? (
-        <Registered />
-      ) : (
-        <SignUp positions={userPositions} registration={registration} />
-      )}
+      {isLoading ? <Loader /> : signUp}
     </div>
   );
 };
