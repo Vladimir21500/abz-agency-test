@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import Input from "../Fields/input/Input";
+import RadioGroup from "../Fields/radioGroup/RadioGroup";
+import File from "../Fields/file/File";
 import { validationSchema } from "../../validation/newUser";
 import { ISignUpProps, IFormInputs } from "../../types/properties";
 
@@ -48,66 +51,20 @@ const SignUp: React.FC<ISignUpProps> = ({ positions, registration }) => {
     <div className='sign-up'>
       <h2 className='sign-up__title'>Working with POST request</h2>
       <form className='sign-up__form' onSubmit={handleSubmit(onSubmit)}>
-        <input
-          className={errors.name ? "invalid" : ""}
-          id='name'
-          {...register("name")}
-          placeholder='name'
-        />
-        {errors.name && (
-          <span className='sign-up__error'>{errors.name.message}</span>
-        )}
-        <input
-          className={errors.email ? "invalid" : ""}
-          {...register("email")}
-          placeholder='email'
-        />
-        {errors.email && (
-          <span className='sign-up__error'>{errors.email.message}</span>
-        )}
-        <input
-          className={errors.phone ? "invalid" : ""}
-          {...register("phone")}
-          placeholder='phone'
-        />
-        {errors.phone ? (
-          <span className='sign-up__error'>{errors.phone.message}</span>
-        ) : (
+        <Input name='name' register={register} errors={errors}></Input>
+        <Input name='email' register={register} errors={errors}></Input>
+        <Input name='phone' register={register} errors={errors}></Input>
+        {!errors.phone && (
           <span className='sign-up__prompt'>+38 (XXX) XXX - XX - XX</span>
         )}
-        <h5 className='select-title'>Select your position</h5>
-        <div className='select'>
-          {positions.map((position) => (
-            <div key={position.id}>
-              <input
-                {...register("position")}
-                type='radio'
-                value={position.id}
-                name='position'
-              />
-              <label>{position.name}</label>
-            </div>
-          ))}
-        </div>
-        {errors.position && (
-          <span className='sign-up__error'>{errors.position.message}</span>
-        )}
-
-        <div className='sign-up__input-file-container'>
-          <input id='photo' {...register("photo")} type='file' name='photo' />
-          <label
-            className={`label-for-upload ${errors.photo ? "invalid" : ""}`}
-            htmlFor='photo'
-          >
-            Upload
-          </label>
-          <span className={`span-for-upload ${errors.photo ? "invalid" : ""}`}>
-            Upload your file
-          </span>
-        </div>
-        {errors.photo && (
-          <span className='sign-up__error'>{errors.photo.message}</span>
-        )}
+        <h5 className='radio-group-title'>Select your position</h5>
+        <RadioGroup
+          name='position'
+          valuesArray={positions}
+          register={register}
+          errors={errors}
+        />
+        <File name='photo' register={register} errors={errors} />
         <button className='btn' type='submit'>
           Sign In
         </button>
