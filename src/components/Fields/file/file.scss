@@ -10,8 +10,8 @@ input[type="file"] {
   margin-top: 50px;
   justify-content: center;
 
-  span {
-    border-left: none;
+  & .input-file__span {
+    border-left: none !important;
   }
 
   @include for-small-up {

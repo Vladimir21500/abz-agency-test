@@ -3,8 +3,7 @@ import { IUserCardProps } from "../../types/properties";
 
 import "./userCard.scss";
 
-const defaultPhoto =
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/1200px-Breezeicons-actions-22-im-user.svg.png";
+const defaultPhoto = "vector.png";
 
 const UserCard: React.FC<IUserCardProps> = ({
   name,

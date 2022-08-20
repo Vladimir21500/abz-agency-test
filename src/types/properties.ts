@@ -35,6 +35,7 @@ export interface IInputProps {
   name: string;
   register: any;
   errors: any;
+  value: string;
 }
 
 interface IRadioValue {
