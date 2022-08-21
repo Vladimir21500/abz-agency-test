@@ -6,19 +6,9 @@ const patternEmail =
 const patternPhone = /^[\+]{0,1}380([0-9]{9})$/;
 
 export const validationSchema = yup.object({
-  name: yup
-    .string()
-    .required("Enter your name")
-    .min(2, "Too Short!")
-    .max(60, "Too long!"),
-  email: yup
-    .string()
-    .required("Enter your email")
-    .matches(patternEmail, "Invalid email"),
-  phone: yup
-    .string()
-    .required("Enter your phone")
-    .matches(patternPhone, "Invalid phone"),
+  name: yup.string().required("Enter your name").min(2, "Too Short!").max(60, "Too long!"),
+  email: yup.string().required("Enter your email").matches(patternEmail, "Invalid email"),
+  phone: yup.string().required("Enter your phone").matches(patternPhone, "Invalid phone"),
   position: yup.mixed().required("Select your position"),
   photo: yup
     .mixed()

@@ -4,13 +4,13 @@ input[type="file"] {
   display: none;
 }
 
-.input-file {
+.input-file-container {
   display: flex;
   width: 328px;
   margin-top: 50px;
   justify-content: center;
 
-  & .input-file__span {
+  & .input-file-container__span {
     border-left: none !important;
   }
 

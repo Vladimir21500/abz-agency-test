@@ -5,12 +5,7 @@ import Users from "./components/users/Users";
 import SignUp from "./components/signUp/SignUp";
 import Loader from "./components/loader/Loader";
 import Registered from "./components/registered/Registered";
-import {
-  getUsers,
-  getUserPositions,
-  getToken,
-  createUser,
-} from "./gateway/gateway";
+import { getUsers, getUserPositions, getToken, createUser } from "./gateway/gateway";
 import { IUserInfo, IUserPosition } from "./types/user";
 
 const App: React.FC<{}> = () => {
@@ -43,6 +38,7 @@ const App: React.FC<{}> = () => {
     const token = await getToken();
     const response = await createUser(userData, token.token);
     setIsLoading(false);
+
     if (response.success) {
       setIsRegistered(true);
       setCurrentPage(1);
@@ -73,11 +69,7 @@ const App: React.FC<{}> = () => {
     <div className='page'>
       <Header moveToUsers={moveToUsers} moveToSignUp={moveToSignUp} />
       <Banner moveToSignUp={moveToSignUp} />
-      <Users
-        users={users}
-        showMore={showMore}
-        isLastPageUsers={isLastPageUsers}
-      />
+      <Users users={users} showMore={showMore} isLastPageUsers={isLastPageUsers} />
       {isLoading ? <Loader /> : signUp}
     </div>
   );

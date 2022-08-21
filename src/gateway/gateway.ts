@@ -7,6 +7,7 @@ export const getUsers = async (page: number) => {
     if (!response.ok) {
       throw new Error(`${response.status}`);
     }
+
     return response.json();
   } catch (error) {
     alert(`get users, ${error}`);
@@ -15,16 +16,13 @@ export const getUsers = async (page: number) => {
 
 export const createUser = async (formData: any, token: string) => {
   try {
-    const response = await fetch(
-      "https://frontend-test-assignment-api.abz.agency/api/v1/users",
-      {
-        method: "POST",
-        body: formData,
-        headers: {
-          Token: token,
-        },
-      }
-    );
+    const response = await fetch("https://frontend-test-assignment-api.abz.agency/api/v1/users", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Token: token,
+      },
+    });
 
     if (response.status === 409) {
       console.log("409", response);
@@ -44,13 +42,12 @@ export const createUser = async (formData: any, token: string) => {
 
 export const getToken = async () => {
   try {
-    const response = await fetch(
-      "https://frontend-test-assignment-api.abz.agency/api/v1/token"
-    );
+    const response = await fetch("https://frontend-test-assignment-api.abz.agency/api/v1/token");
 
     if (!response.ok) {
       throw new Error(`${response.status}`);
     }
+
     return response.json();
   } catch (error) {
     alert(`get token ${error}`);
@@ -59,9 +56,7 @@ export const getToken = async () => {
 
 export const getUserPositions = async () => {
   try {
-    const response = await fetch(
-      "https://frontend-test-assignment-api.abz.agency/api/v1/positions"
-    );
+    const response = await fetch("https://frontend-test-assignment-api.abz.agency/api/v1/positions");
 
     if (!response.ok) {
       throw new Error(`${response.status}`);

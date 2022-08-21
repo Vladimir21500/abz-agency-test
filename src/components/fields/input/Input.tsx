@@ -16,15 +16,9 @@ const Input: React.FC<IInputProps> = ({ name, register, errors, value }) => {
 
   return (
     <div className='input-container'>
-      <input
-        className={errors[name] ? "invalid" : ""}
-        {...register(name)}
-        placeholder={name}
-      />
+      <input className={errors[name] ? "invalid" : ""} {...register(name)} placeholder={name} />
       <label className={labelClass}>{name}</label>
-      {errors[name] && (
-        <span className='sign-up__error'>{errors[name].message}</span>
-      )}
+      {errors[name] && <span className='sign-up__error'>{errors[name].message}</span>}
     </div>
   );
 };

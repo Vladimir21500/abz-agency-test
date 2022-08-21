@@ -5,13 +5,7 @@ import "./userCard.scss";
 
 const defaultPhoto = "vector.png";
 
-const UserCard: React.FC<IUserCardProps> = ({
-  name,
-  email,
-  phone,
-  position,
-  photo,
-}) => {
+const UserCard: React.FC<IUserCardProps> = ({ name, email, phone, position, photo }) => {
   const formatPhoto = photo.split(".").reverse()[0];
 
   const cardPhoto =
