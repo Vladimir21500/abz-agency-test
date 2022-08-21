@@ -36,6 +36,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - [Sass (Scss)](https://sass-lang.com/)
 - [BEM methodology](https://en.bem.info/methodology/)
 - [React](https://ru.reactjs.org/)
+- [useForm](https://react-hook-form.com/)
 - [Hooks](https://ru.reactjs.org/docs/hooks-intro.html)
 
 ### Author
